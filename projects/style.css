@@ -60,13 +60,13 @@ nav a:hover{
 .showcase a{
     /*width: 270px;*/
 
-    width: 650px;
+    width: 550px;
 
     /*width: 150px;
     */
     /*height: 180px;*/
 
-    height: 375px;
+    height: 325px;
 
 
     background-color: #fff;
@@ -92,8 +92,8 @@ nav a:hover{
 /* 但是本视频就先不涉及@media了 */
 .showcase a img{
     /*width: 270px;*/
-    width: 650px;
-    height: 350px;
+    width: 550px;
+    height: 300px;
 
 }
 .showcase a span{
