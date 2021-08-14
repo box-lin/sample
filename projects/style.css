@@ -59,12 +59,16 @@ nav a:hover{
 }
 .showcase a{
     /*width: 270px;*/
-    width: 400px;
+
+    width: 650px;
+
     /*width: 150px;
     */
     /*height: 180px;*/
 
-    height: 430px;
+    height: 375px;
+
+
     background-color: #fff;
     margin: 20px;
 
@@ -88,14 +92,16 @@ nav a:hover{
 /* 但是本视频就先不涉及@media了 */
 .showcase a img{
     /*width: 270px;*/
-    width: 400px;
+    width: 650px;
+    height: 350px;
 
-    height: 400px;
 }
 .showcase a span{
     display: block;
     text-align: center;
     color: #595959;
+    font-weight:bold;
+    font-style:oblique;
 }
 
 footer{
