@@ -6,7 +6,7 @@
   <link href="http://boxianglin.github.io/atom.xml" rel="self"/>
   
   <link href="http://boxianglin.github.io/"/>
-  <updated>2021-09-12T00:44:06.171Z</updated>
+  <updated>2021-09-12T00:47:53.199Z</updated>
   <id>http://boxianglin.github.io/</id>
   
   <author>
@@ -21,15 +21,13 @@
     <link href="http://boxianglin.github.io/2021/09/11/FiniteStateMachine/"/>
     <id>http://boxianglin.github.io/2021/09/11/FiniteStateMachine/</id>
     <published>2021-09-12T00:21:30.970Z</published>
-    <updated>2021-09-12T00:44:06.171Z</updated>
+    <updated>2021-09-12T00:47:53.199Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="Finite-State-Machine-Design"><a href="#Finite-State-Machine-Design" class="headerlink" title="Finite State Machine Design"></a>Finite State Machine Design</h2><p>Got this question wrong in the Homework and I think it is a bit complicated to just design the DFA on your mind. To do the DFA for this question, the conversion from an e-NFA to DFA, indeed, could be more accessible.</p><p><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/Q.png" alt="avatar" style="zoom:130%;" /></p><p>Build the C.1 condition DFA is easy but to combine both them into a complete DFA is hard to manage (at least for me). So in here we will build the e-NFA for the C.1 and C.2 by using an empty string to connect them up.</p><p>The below e-NFA diagram shows the upper branch handles the C.1 condition and lower branch handles the C.2 condition.</p><p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/eNFA.png?raw=true" alt="avatar" style="zoom:150%;" /></p><p><strong>The Corresponding Transition Table:</strong></p><ul><li><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/eNFAtable.png" alt="avatar" style="zoom:150%;" /></li></ul><p><strong>Now applied LAZY SUBSET CONSTRUCTION for conversion</strong> (DFA transition table)</p><ul><li><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/DFAtable.png" alt="avatar" style="zoom:150%;" /></li></ul><p>According to the e-NFA diagram we know that qi, q2, q1’ are all accepted states, so from any union of state above include them are all gonna be accepted states in DFA as well (the bold states are acceptable).</p><p>For easier diagram purpose we can rename each union of state a new name, I will adhere to above convention, then draw the the DFA according to the DFA transition table:</p><p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/DFA.png?raw=true" alt="avatar" style="zoom:130%;" /></p>]]></content>
+    <content type="html"><![CDATA[<h2 id="Finite-State-Machine-Design"><a href="#Finite-State-Machine-Design" class="headerlink" title="Finite State Machine Design"></a>Finite State Machine Design</h2><p>Got this question wrong in the Homework and I think it is a bit complicated to just design the DFA on your mind. To do the DFA for this question, the conversion from an e-NFA to DFA, indeed, could be more accessible.</p><p><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/Q.png" alt="avatar" style="zoom:130%;" /></p><span id="more"></span><p>Build the C.1 condition DFA is easy but to combine both them into a complete DFA is hard to manage (at least for me). So in here we will build the e-NFA for the C.1 and C.2 by using an empty string to connect them up.</p><p>The below e-NFA diagram shows the upper branch handles the C.1 condition and lower branch handles the C.2 condition.</p><p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/eNFA.png?raw=true" alt="avatar" style="zoom:150%;" /></p><p><strong>The Corresponding Transition Table:</strong></p><ul><li><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/eNFAtable.png" alt="avatar" style="zoom:150%;" /></li></ul><p><strong>Now applied LAZY SUBSET CONSTRUCTION for conversion</strong> (DFA transition table)</p><ul><li><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/DFAtable.png" alt="avatar" style="zoom:150%;" /></li></ul><p>According to the e-NFA diagram we know that qi, q2, q1’ are all accepted states, so from any union of state above include them are all gonna be accepted states in DFA as well (the bold states are acceptable).</p><p>For easier diagram purpose we can rename each union of state a new name, I will adhere to above convention, then draw the the DFA according to the DFA transition table:</p><p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/DFA.png?raw=true" alt="avatar" style="zoom:130%;" /></p>]]></content>
     
     
-      
-      
-    <summary type="html">&lt;h2 id=&quot;Finite-State-Machine-Design&quot;&gt;&lt;a href=&quot;#Finite-State-Machine-Design&quot; class=&quot;headerlink&quot; title=&quot;Finite State Machine Design&quot;&gt;&lt;/a&gt;Finit</summary>
-      
+    <summary type="html">&lt;h2 id=&quot;Finite-State-Machine-Design&quot;&gt;&lt;a href=&quot;#Finite-State-Machine-Design&quot; class=&quot;headerlink&quot; title=&quot;Finite State Machine Design&quot;&gt;&lt;/a&gt;Finite State Machine Design&lt;/h2&gt;&lt;p&gt;Got this question wrong in the Homework and I think it is a bit complicated to just design the DFA on your mind. To do the DFA for this question, the conversion from an e-NFA to DFA, indeed, could be more accessible.&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/Q.png&quot; alt=&quot;avatar&quot; style=&quot;zoom:130%;&quot; /&gt;&lt;/p&gt;</summary>
     
     
     

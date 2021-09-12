@@ -5,6 +5,7 @@
     <url>/2021/09/11/FiniteStateMachine/</url>
     <content><![CDATA[<h2 id="Finite-State-Machine-Design"><a href="#Finite-State-Machine-Design" class="headerlink" title="Finite State Machine Design"></a>Finite State Machine Design</h2><p>Got this question wrong in the Homework and I think it is a bit complicated to just design the DFA on your mind. To do the DFA for this question, the conversion from an e-NFA to DFA, indeed, could be more accessible.</p>
 <p><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/Q.png" alt="avatar" style="zoom:130%;" /></p>
+<span id="more"></span>
 <p>Build the C.1 condition DFA is easy but to combine both them into a complete DFA is hard to manage (at least for me). So in here we will build the e-NFA for the C.1 and C.2 by using an empty string to connect them up.</p>
 <p>The below e-NFA diagram shows the upper branch handles the C.1 condition and lower branch handles the C.2 condition.</p>
 <p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/eNFA.png?raw=true" alt="avatar" style="zoom:150%;" /></p>
