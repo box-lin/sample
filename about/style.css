@@ -11,14 +11,7 @@ body{
     padding: 0;
     background: url(background.png) no-repeat;
     background-size: cover;
-
 }
-@media only screen and (min-device-width: 375px) and (max-device-width: 812px) {
-    body {
-        background: url(phoneback.png) no-repeat;
-    }
-}
-
 .box{
     width: 550px;
     background: rgba(0, 0, 0, 0.4);

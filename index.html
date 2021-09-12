@@ -127,6 +127,74 @@
     
     
     <article
+  id="post-FiniteStateMachine"
+  class="article article-type-post"
+  itemscope
+  itemprop="blogPost"
+  data-scroll-reveal
+>
+  <div class="article-inner">
+    
+    <header class="article-header">
+       
+<h2 itemprop="name">
+  <a class="article-title" href="/2021/09/11/FiniteStateMachine/"
+    >Finite State Machine Design</a> 
+</h2>
+ 
+
+    </header>
+     
+    <div class="article-meta">
+      <a href="/2021/09/11/FiniteStateMachine/" class="article-date">
+  <time datetime="2021-09-12T00:21:30.970Z" itemprop="datePublished">2021-09-11</time>
+</a> 
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/Automata-and-Formal-Languages/">Automata and Formal Languages</a>
+  </div>
+   
+    </div>
+      
+    <div class="article-entry" itemprop="articleBody">
+       
+  <h2 id="Finite-State-Machine-Design"><a href="#Finite-State-Machine-Design" class="headerlink" title="Finite State Machine Design"></a>Finite State Machine Design</h2><p>Got this question wrong in the Homework and I think it is a bit complicated to just design the DFA on your mind. To do the DFA for this question, the conversion from an e-NFA to DFA, indeed, could be more accessible.</p>
+<p><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/Q.png" alt="avatar" style="zoom:130%;" /></p>
+<p>Build the C.1 condition DFA is easy but to combine both them into a complete DFA is hard to manage (at least for me). So in here we will build the e-NFA for the C.1 and C.2 by using an empty string to connect them up.</p>
+<p>The below e-NFA diagram shows the upper branch handles the C.1 condition and lower branch handles the C.2 condition.</p>
+<p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/eNFA.png?raw=true" alt="avatar" style="zoom:150%;" /></p>
+<p><strong>The Corresponding Transition Table:</strong></p>
+<ul>
+<li><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/eNFAtable.png" alt="avatar" style="zoom:150%;" /></li>
+</ul>
+<p><strong>Now applied LAZY SUBSET CONSTRUCTION for conversion</strong> (DFA transition table)</p>
+<ul>
+<li><img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/DFAtable.png" alt="avatar" style="zoom:150%;" /></li>
+</ul>
+<p>According to the e-NFA diagram we know that qi, q2, q1’ are all accepted states, so from any union of state above include them are all gonna be accepted states in DFA as well (the bold states are acceptable).</p>
+<p>For easier diagram purpose we can rename each union of state a new name, I will adhere to above convention, then draw the the DFA according to the DFA transition table:</p>
+<p><img src="https://github.com/boxianglin/Storage/blob/main/Photos/DFA.png?raw=true" alt="avatar" style="zoom:130%;" /></p>
+ 
+      <!-- reward -->
+      
+    </div>
+    
+
+    <!-- copyright -->
+    
+    <footer class="article-footer">
+       
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Automata-and-Formal-Languages/" rel="tag">Automata and Formal Languages</a></li></ul>
+
+    </footer>
+  </div>
+
+    
+ 
+    
+</article>
+
+    
+    <article
   id="post-MeetingsCompute"
   class="article article-type-post"
   itemscope
@@ -222,31 +290,34 @@
       
     <div class="article-entry" itemprop="articleBody">
        
-  <p>For phone user, the css might not be properly rendered for MathJax, please visit<br>the pdf file at <a target="_blank" rel="noopener" href="https://github.com/boxianglin/Storage/blob/main/Numerical-Solve-PDE-Post/NumericallyPDEs.pdf">here</a></p>
-<h4 id="Sample-Partial-Differential-Equation"><a href="#Sample-Partial-Differential-Equation" class="headerlink" title="Sample Partial Differential Equation"></a>Sample Partial Differential Equation</h4><script type="math/tex; mode=display">
-\begin{align*}
-& \text{Suppose given the PDE (Diffusion)} \\
-& \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t>0\\
+  <p>For phone user, the css might not be properly rendered for MathJax, please visit<br>
+the pdf file at <a target="_blank" rel="noopener" href="https://github.com/boxianglin/Storage/blob/main/Numerical-Solve-PDE-Post/NumericallyPDEs.pdf">here</a></p>
+<h4 id="sample-partial-differential-equation">Sample Partial Differential Equation</h4>
+<p class='katex-block katex-error' title='ParseError: KaTeX parse error: No such environment: align* at position 7: \begin{̲a̲l̲i̲g̲n̲*̲}̲
+&amp; \text{Suppos…'>\begin{align*}
+&amp; \text{Suppose given the PDE (Diffusion)} \\
+&amp; \partial_tu=D\partial_x^2u,\ for\ x\ \in[0,1],and\ t&gt;0\\
 \\
-& \text{Exact Solution (can be found in multiple PDEs textbooks): }\\
-& u(x,t) = \sum_{k=1}^{n}=\frac{4}{(k\pi)^2}sin(\frac{k\pi}{2})sin(k\pi x)e^{-0.5(k\pi )^2t}\\
+&amp; \text{Exact Solution (can be found in multiple PDEs textbooks): }\\
+&amp; u(x,t) = \sum_{k=1}^{n}=\frac{4}{(k\pi)^2}sin(\frac{k\pi}{2})sin(k\pi x)e^{-0.5(k\pi )^2t}\\
 \\
-& \text{We are going to compute the numerical solution with }\\
-& \text{the given information below. }\\
+&amp; \text{We are going to compute the numerical solution with }\\
+&amp; \text{the given information below. }\\
 \\
-& \text{for }x \in[0,1] \text{ and t > 0 :}\\
-& the\ initial\ condition\ u(x,0)=\begin{cases}
-x,  & \text{if } 0\leq x \leq 1/2\\
-1-x, & \text{if } 1/2 < x\leq1   
+&amp; \text{for }x \in[0,1] \text{ and t &gt; 0 :}\\
+&amp; the\ initial\ condition\ u(x,0)=\begin{cases}
+x,  &amp; \text{if } 0\leq x \leq 1/2\\
+1-x, &amp; \text{if } 1/2 &lt; x\leq1   
 \end{cases}\\
-&\text{the boundary condition } u(0,t)=u(1,t)=0 \\
+&amp;\text{the boundary condition } u(0,t)=u(1,t)=0 \\
 \\
-& \text{The Explicit Difference Schema: }\\
-& \frac{u_j^{n+1}-u_j^n}{\Delta t}= D\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}, where\ D=\frac{1}{2}\\
+&amp; \text{The Explicit Difference Schema: }\\
+&amp; \frac{u_j^{n+1}-u_j^n}{\Delta t}= D\frac{u_{j+1}^n-2u_j^n+u_{j-1}^n}{(\Delta x)^2}, where\ D=\frac{1}{2}\\
 \\
 
-&\text{Take }\Delta x=0.1, \Delta t=1/100 \text{ to proceed the calculations;}
-\end{align*}</script> 
+&amp;\text{Take }\Delta x=0.1, \Delta t=1/100 \text{ to proceed the calculations;}
+\end{align*}
+</p> 
       <a class="article-more-link" href="/2021/05/22/NumericallyPDE/"
         >Read More ...</a
       >
