@@ -80,16 +80,7 @@ p {
 }
 .primary-btn {
 	display: inline-block;
-	background-color: var(--primary-color);
-	color: white;
-	font-size: 1.8rem;
-	padding: 0.6em 1.6em;
-	border-radius: 50px;
-}
-
-.dark-btn {
-	display: inline-block;
-	background-color: slategray;
+	background-color: rgb(10, 104, 10);
 	color: white;
 	font-size: 1.8rem;
 	padding: 0.6em 1.6em;
