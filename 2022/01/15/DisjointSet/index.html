@@ -9,7 +9,7 @@
     
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
   <title>
-    Finite State Machine Design |  Veritas
+    Disjoint-Set Data Structure |  Veritas
   </title>
   <meta name="generator" content="hexo-theme-ayer">
   
@@ -52,7 +52,7 @@
     <main class="content on">
       <section class="outer">
   <article
-  id="post-FiniteStateMachine"
+  id="post-DisjointSet"
   class="article article-type-post"
   itemscope
   itemprop="blogPost"
@@ -63,18 +63,18 @@
     <header class="article-header">
        
 <h1 class="article-title sea-center" style="border-left:0" itemprop="name">
-  Finite State Machine Design
+  Disjoint-Set Data Structure
 </h1>
  
 
     </header>
      
     <div class="article-meta">
-      <a href="/2021/09/11/FiniteStateMachine/" class="article-date">
-  <time datetime="2021-09-12T00:21:30.970Z" itemprop="datePublished">2021-09-11</time>
+      <a href="/2022/01/15/DisjointSet/" class="article-date">
+  <time datetime="2022-01-16T07:31:23.722Z" itemprop="datePublished">2022-01-15</time>
 </a> 
   <div class="article-category">
-    <a class="article-category-link" href="/categories/Fun-Post/">Fun Post</a>
+    <a class="article-category-link" href="/categories/Data-Structure-And-Algorithm-Notes/">Data Structure And Algorithm Notes</a>
   </div>
   
 <div class="word_count">
@@ -82,7 +82,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-quill-pen-line"></i>
             <span class="post-meta-item-text"> Word count:</span>
-            <span class="post-count">204</span>
+            <span class="post-count">333</span>
         </span>
     </span>
 
@@ -91,7 +91,7 @@
         <span class="post-meta-item-icon">
             <i class="ri-book-open-line"></i>
             <span class="post-meta-item-text"> Reading time≈</span>
-            <span class="post-count">1 min</span>
+            <span class="post-count">2 min</span>
         </span>
     </span>
 </div>
@@ -106,28 +106,16 @@
   
     <div class="article-entry" itemprop="articleBody">
        
-  <h2 id="finite-state-machine-design">Finite State Machine Design</h2>
-<p>Got this question wrong in the Homework and I think it is a bit complicated to just design the DFA on your mind. To do the DFA for this question, the conversion from an e-NFA to DFA, indeed, could be more accessible.</p>
-<img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/Q.png" alt="avatar" style="zoom:130%;" />
-<span id="more"></span>
-<p>Build the C.1 condition DFA is easy but to combine both them into a complete DFA is hard to manage (at least for me). So in here we will build the e-NFA for the C.1 and C.2 by using an empty string to connect them up.</p>
-<p>The below e-NFA diagram shows the upper branch handles the C.1 condition and lower branch handles the C.2 condition.</p>
-<img src="https://github.com/boxianglin/Storage/blob/main/Photos/eNFA.png?raw=true" alt="avatar" style="zoom:150%;" />
-<p><strong>The Corresponding Transition Table:</strong></p>
-<ul>
-<li>
-<img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/eNFAtable.png" alt="avatar" style="zoom:150%;" />
-</li>
-</ul>
-<p><strong>Now applied LAZY SUBSET CONSTRUCTION for conversion</strong> (DFA transition table)</p>
-<ul>
-<li>
-<img src="https://raw.githubusercontent.com/boxianglin/Storage/main/Photos/DFAtable.png" alt="avatar" style="zoom:150%;" />
-</li>
-</ul>
-<p>According to the e-NFA diagram we know that qi, q2, q1’ are all accepted states, so from any union of state above include them are all gonna be accepted states in DFA as well (the bold states are acceptable).</p>
-<p>For easier diagram purpose we can rename each union of state a new name, I will adhere to above convention, then draw the the DFA according to the DFA transition table:</p>
-<img src="https://github.com/boxianglin/Storage/blob/main/Photos/DFA.png?raw=true" alt="avatar" style="zoom:130%;" /> 
+  <h2 id="disjoint-set-visualization">Disjoint-Set Visualization</h2>
+<p><img src="https://miro.medium.com/max/1400/1*S4iejP1UzIrilYQSosP_ig.png" alt=""></p>
+<span id="more"></span> 
+<h2 id="optimized-disjoint-set-with-path-compression-and-union-by-rank-from-leetcode">Optimized “disjoint set” with Path Compression and Union by Rank (From LeetCode)</h2>
+<p>Unless worst case the average cases will be more efficient.</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># UnionFind class</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, size</span>):</span></span><br><span class="line">        self.root = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size)]</span><br><span class="line">        <span class="comment"># Use a rank array to record the height of each vertex, i.e., the &quot;rank&quot; of each vertex.</span></span><br><span class="line">        <span class="comment"># The initial &quot;rank&quot; of each vertex is 1, because each of them is</span></span><br><span class="line">        <span class="comment"># a standalone vertex with no connection to other vertices.</span></span><br><span class="line">        self.rank = [<span class="number">1</span>] * size</span><br><span class="line"></span><br><span class="line">    <span class="comment"># The find function here is the same as that in the disjoint set with path compression.</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="keyword">if</span> x == self.root[x]:</span><br><span class="line">            <span class="keyword">return</span> x</span><br><span class="line">        self.root[x] = self.find(self.root[x])</span><br><span class="line">        <span class="keyword">return</span> self.root[x]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># The union function with union by rank</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        rootX = self.find(x)</span><br><span class="line">        rootY = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootX != rootY:</span><br><span class="line">            <span class="keyword">if</span> self.rank[rootX] &gt; self.rank[rootY]:</span><br><span class="line">                self.root[rootY] = rootX</span><br><span class="line">            <span class="keyword">elif</span> self.rank[rootX] &lt; self.rank[rootY]:</span><br><span class="line">                self.root[rootX] = rootY</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                self.root[rootY] = rootX</span><br><span class="line">                self.rank[rootX] += <span class="number">1</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.find(x) == self.find(y)</span><br></pre></td></tr></table></figure>
+<h2 id="quick-find">Quick Find</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, size</span>):</span></span><br><span class="line">        self.root = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size)]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.root[x]</span><br><span class="line">    </span><br><span class="line">    <span class="comment"># O(N)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        rootX = self.find(x)</span><br><span class="line">        rootY = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootX != rootY:</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(self.root)):</span><br><span class="line">                <span class="keyword">if</span> self.root[i] == rootY:</span><br><span class="line">                    self.root[i] = rootX</span><br><span class="line"></span><br><span class="line">    <span class="comment">#O(1)</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.find(x) == self.find(y)</span><br></pre></td></tr></table></figure>
+<h2 id="quick-union">Quick Union</h2>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">UnionFind</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, size</span>):</span></span><br><span class="line">        self.root = [i <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(size)]</span><br><span class="line"></span><br><span class="line">    <span class="comment"># </span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">find</span>(<span class="params">self, x</span>):</span></span><br><span class="line">        <span class="keyword">while</span> x != self.root[x]:</span><br><span class="line">            x = self.root[x]</span><br><span class="line">        <span class="keyword">return</span> x</span><br><span class="line">		</span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">union</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        rootX = self.find(x)</span><br><span class="line">        rootY = self.find(y)</span><br><span class="line">        <span class="keyword">if</span> rootX != rootY:</span><br><span class="line">            self.root[rootY] = rootX</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">connected</span>(<span class="params">self, x, y</span>):</span></span><br><span class="line">        <span class="keyword">return</span> self.find(x) == self.find(y)</span><br></pre></td></tr></table></figure> 
       <!-- reward -->
       
       <div id="reword-out">
@@ -197,12 +185,12 @@
     <a class="modal-close" href="javascript:;"><i class="ri-close-circle-line"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://boxianglin.github.io/2021/09/11/FiniteStateMachine/" alt="微信分享二维码">
+      <img src="//api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://boxianglin.github.io/2022/01/15/DisjointSet/" alt="微信分享二维码">
     </div>
 </div>
 
 <div id="share-mask"></div>  
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Fun-Post/" rel="tag">Fun Post</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Structure-And-Algorithm-Notes/" rel="tag">Data Structure And Algorithm Notes</a></li></ul>
 
     </footer>
   </div>
@@ -210,19 +198,10 @@
    
   <nav class="article-nav">
     
+    
       <a href="/2022/01/15/Trie/" class="article-nav-link">
-        <strong class="article-nav-caption">Previous Article</strong>
-        <div class="article-nav-title">
-          
-            Trie Data Structure
-          
-        </div>
-      </a>
-    
-    
-      <a href="/2021/06/15/MeetingsCompute/" class="article-nav-link">
         <strong class="article-nav-caption">Next Article</strong>
-        <div class="article-nav-title">Compute the time available for meetings</div>
+        <div class="article-nav-title">Trie Data Structure</div>
       </a>
     
   </nav>
