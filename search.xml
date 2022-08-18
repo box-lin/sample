@@ -169,51 +169,45 @@ x,  &amp; \text{if } 0\leq x \leq 1/2\\
   <entry>
     <title>Sorting Algorithm Templates</title>
     <url>/2022/08/14/Sorting%20Algorithm%20Templates/</url>
-    <content><![CDATA[<h2 id="quick-sort">Quick Sort</h2>
-<ol>
+    <content><![CDATA[<h2 id="Quick-Sort"><a href="#Quick-Sort" class="headerlink" title="Quick Sort"></a>Quick Sort</h2><ol>
 <li>Pick first number and run partition</li>
-<li>Run quicksort on left</li>
+<li>Run quicksort on left </li>
 <li>Run quicksort on right</li>
 </ol>
 <p>Recurrence formula: $ f(n) = f(r-1) + f(n-r) + an$</p>
 <ul>
-<li>
-<p>Avg Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
-</li>
-<li>
-<p>Worst Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></p>
-<ul>
+<li>Avg Time: $O(nlogn)$</li>
+<li>Worst Time: $O(n^2)$ <ul>
 <li>Why? happens to use quicksort to sort a sorted items (for quicksort that pick first item as pivot)</li>
-<li>In this case we have to partition n times, each partion costs <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>, <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>n</mi><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mo stretchy="false">)</mo><mo>=</mo><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">nO(n) = O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>In this case we have to partition n times, each partion costs $O(n)$, $nO(n) = O(n^2)$  </li>
 </ul>
 </li>
-<li>
-<p>Python Implementation</p>
-</li>
+</ul>
+<span id="more"></span> 
+<ul>
+<li>Python Implementation</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortArray</span>(<span class="params">self, N: List[<span class="built_in">int</span>]</span>) -&gt; List[int]:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">quicksort</span>(<span class="params">arr, l, r</span>):</span></span><br><span class="line">            <span class="keyword">if</span> l &gt;= r: <span class="keyword">return</span> arr</span><br><span class="line">            i, j = l, r</span><br><span class="line">            <span class="comment"># parition  -------------</span></span><br><span class="line">            pivot = arr[i]</span><br><span class="line">            <span class="keyword">while</span> i&lt;j:</span><br><span class="line">                <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> arr[j] &gt;= pivot: </span><br><span class="line">                    j-=<span class="number">1</span></span><br><span class="line">                arr[i] = arr[j]</span><br><span class="line">                <span class="keyword">while</span> i&lt;j <span class="keyword">and</span> arr[i] &lt;= pivot: </span><br><span class="line">                    i+=<span class="number">1</span></span><br><span class="line">                arr[j] = arr[i]   </span><br><span class="line">            arr[i] = pivot</span><br><span class="line">            <span class="comment"># -------------------------</span></span><br><span class="line">            quicksort(arr, l, i)</span><br><span class="line">            quicksort(arr, i+<span class="number">1</span>, r)</span><br><span class="line">            <span class="keyword">return</span> arr   </span><br><span class="line">        <span class="keyword">return</span> quicksort(N, <span class="number">0</span>, <span class="built_in">len</span>(N)-<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="merge-sort">Merge Sort</h2>
-<ol>
-<li>Pick the mid</li>
+<h2 id="Merge-Sort"><a href="#Merge-Sort" class="headerlink" title="Merge Sort"></a>Merge Sort</h2><ol>
+<li>Pick the mid </li>
 <li>Run merge sort on left</li>
 <li>Run merge sort on right</li>
 <li>Merge left and right</li>
 </ol>
 <p>Recurrence formula: $ f(n) = f(n/2) + f(n/2) + an$</p>
 <ul>
-<li>Avg Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
-<li>Worst Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><mi>n</mi><mi>l</mi><mi>o</mi><mi>g</mi><mi>n</mi><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(nlogn)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mord mathdefault" style="margin-right:0.01968em;">l</span><span class="mord mathdefault">o</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></li>
+<li>Avg Time: $O(nlogn)$</li>
+<li>Worst Time: $O(nlogn)$</li>
 <li>Python Implementation</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortArray</span>(<span class="params">self, N: List[<span class="built_in">int</span>]</span>) -&gt; List[int]:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">mergeSort</span>(<span class="params">arr</span>):</span></span><br><span class="line">            <span class="keyword">if</span> <span class="built_in">len</span>(arr) &lt;= <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> arr</span><br><span class="line">            leftarr = mergeSort(arr[:<span class="built_in">len</span>(arr)//<span class="number">2</span>])</span><br><span class="line">            rightarr = mergeSort(arr[<span class="built_in">len</span>(arr)//<span class="number">2</span>:])</span><br><span class="line">            <span class="comment"># Merge -----------------------------</span></span><br><span class="line">            i, j, k = <span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(leftarr) <span class="keyword">and</span> j &lt; <span class="built_in">len</span>(rightarr):</span><br><span class="line">                <span class="keyword">if</span> leftarr[i] &lt; rightarr[j]: </span><br><span class="line">                    arr[k] = leftarr[i]</span><br><span class="line">                    i += <span class="number">1</span></span><br><span class="line">                <span class="keyword">else</span>: </span><br><span class="line">                    arr[k] = rightarr[j]</span><br><span class="line">                    j += <span class="number">1</span></span><br><span class="line">                k += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> i &lt; <span class="built_in">len</span>(leftarr):</span><br><span class="line">                arr[k] = leftarr[i]</span><br><span class="line">                i += <span class="number">1</span></span><br><span class="line">                k += <span class="number">1</span></span><br><span class="line">            <span class="keyword">while</span> j &lt; <span class="built_in">len</span>(rightarr):</span><br><span class="line">                arr[k] = rightarr[j]</span><br><span class="line">                j += <span class="number">1</span></span><br><span class="line">                k += <span class="number">1</span></span><br><span class="line">            <span class="comment"># -----------------------------------</span></span><br><span class="line">            <span class="keyword">return</span> arr              </span><br><span class="line">        <span class="keyword">return</span> mergeSort(N)</span><br></pre></td></tr></table></figure>
-<h2 id="insertion-sort">Insertion Sort</h2>
-<ol>
+<h2 id="Insertion-Sort"><a href="#Insertion-Sort" class="headerlink" title="Insertion Sort"></a>Insertion Sort</h2><ol>
 <li>Run insertion sort on A[1… n-1]</li>
 <li>Insert A[n] into sorted A[1…n-1]</li>
 </ol>
 <p>Recurrence formula: $ f(n) = f(n-1) + O(n)$</p>
 <ul>
-<li>Worst Time: <span class="katex"><span class="katex-mathml"><math xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>O</mi><mo stretchy="false">(</mo><msup><mi>n</mi><mn>2</mn></msup><mo stretchy="false">)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span></li>
+<li>Worst Time: $O(n^2)$</li>
 <li>Python Implementation</li>
 </ul>
 <figure class="highlight python"><table><tr><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">sortArray</span>(<span class="params">self, N: List[<span class="built_in">int</span>]</span>) -&gt; List[int]:</span></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">insertSort</span>(<span class="params">n</span>):</span></span><br><span class="line">            <span class="keyword">if</span> n &lt;= <span class="number">1</span>:</span><br><span class="line">                <span class="keyword">return</span> </span><br><span class="line">            insertSort(n-<span class="number">1</span>)</span><br><span class="line">            lastitem = N[n-<span class="number">1</span>]</span><br><span class="line">            idx = n-<span class="number">2</span></span><br><span class="line">            <span class="keyword">while</span> idx &gt;= <span class="number">0</span> <span class="keyword">and</span> N[idx] &gt; lastitem:</span><br><span class="line">                N[idx+<span class="number">1</span>] = N[idx]</span><br><span class="line">                idx -= <span class="number">1</span></span><br><span class="line">            N[idx+<span class="number">1</span>] = lastitem</span><br><span class="line">        insertSort(<span class="built_in">len</span>(N))</span><br><span class="line">        <span class="keyword">return</span> N</span><br></pre></td></tr></table></figure>
@@ -224,6 +218,191 @@ x,  &amp; \text{if } 0\leq x \leq 1/2\\
       </categories>
       <tags>
         <tag>Sorting Templates</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Basic OOP Interview Questions</title>
+    <url>/2022/08/14/Basic%20OOP%20Interview/</url>
+    <content><![CDATA[<p><strong>Why do we need OOP</strong></p>
+<ul>
+<li>OOP help us to think in terms of real world objects. We are able to think pieces then come up with complex system. A bottom-up design approach.</li>
+<li>Lot of object oriented patterns we can use to help us achieve high cohesion low coupling state, supports the general goals of high readability and maintainability.</li>
+</ul>
+<p><strong>What are the important pillars in OOP</strong>?</p>
+<ul>
+<li>Abstration: Show only what is neccessary</li>
+<li>Polymorphism: Object acts differently under different condition</li>
+<li>Inheritance: Parent child relationship</li>
+<li>Encapsulation: Hide complexity</li>
+</ul>
+<span id="more"></span> 
+<p><strong>What is a class and object</strong>?</p>
+<ul>
+<li>Class is a bluprint, object is an instance of the class.</li>
+</ul>
+<p><strong>Abstraction vs Encapsulation (thought process)</strong></p>
+<ul>
+<li>Abstraction show what is neccessary, happens in design phase, determine what has to shown public.</li>
+<li>Encapsulation hide complexity, happens in execution phase, implements abstraction.</li>
+<li>Access identifier to implement these thought processes</li>
+</ul>
+<p><strong>Explain the virtual keyword in C</strong>#?</p>
+<ul>
+<li>Virtual keyword helps us to define some logic in the parent class which can be overriden in the child class</li>
+</ul>
+<p><strong>What is differences between overloading and overriding</strong>?</p>
+<ul>
+<li>Method overloading means same method names with different signature in the same class.</li>
+<li>Overriding happens method with virtual keyword in parent class and overriding that method using override keyword in child class.</li>
+<li>The overridden base method must be virtual , abstract , or override in C#.</li>
+</ul>
+<p><strong>What is polymorphism</strong>?</p>
+<ul>
+<li>An ability for object to act differently under different condition.</li>
+<li>We can’t implement polymorphism without inheritance.</li>
+</ul>
+<p><strong>Static vs Dynamic Polymorphism in C</strong>#</p>
+<ul>
+<li>Static polymorphism is implemented by Method overloading</li>
+<li>Dynamic polymorphism is implemented by method overriding</li>
+</ul>
+<p><strong>Operator overloading</strong></p>
+<ul>
+<li>helps us to redefine additional functionalities for plus, minus, multi, and addition.</li>
+</ul>
+<p><strong>How to do custom operator overloading</strong>?</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">public static SomeClass operator +(SomeClass a1, SomeClass a2) &#123; </span><br><span class="line">    return new SomeClass(a1.someValue + a2.someValue)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Why do we need abstract class</strong>?</p>
+<ul>
+<li>Abstract class is a partially defiend parent class.</li>
+<li>We can’t create instance of a abstract class.</li>
+<li>Some implementation is defined and some implementation left for child classes to define.</li>
+<li>All abstract method must be implemented in child class.</li>
+</ul>
+<p><strong>Are abstract method virtual</strong>?</p>
+<ul>
+<li>YES, allowing overriding.</li>
+</ul>
+<p><strong>Explain interfaces and why do we need it</strong></p>
+<ul>
+<li>Interface is a contract, by having contract we have better control on impact analysis, change management and breaking changes.</li>
+<li>All methods, properties inside interface are public.</li>
+</ul>
+<p><strong>If you want to change interface whats the best practice</strong>?</p>
+<ul>
+<li>We can inherited multiple inheriences, helps to add new methods without affecting the old interfaces.</li>
+</ul>
+<p><strong>Differences between abstract class and interfaces</strong></p>
+<ul>
+<li>Abstract class can have fields whereas an interface don’t have.</li>
+<li>An interface can only inherit from another interface it cannot inherit from abstract class whereas an abstract class can inherit from another abstract class and an interface.<br>
+Note: there used to be another difference that an interface cannot have implementation and access modifiers but C# 8.0 changed that.Abstract class members are private by default whereas interface members are public by default.</li>
+</ul>
+]]></content>
+      <categories>
+        <category>Object Oriented Programming</category>
+      </categories>
+      <tags>
+        <tag>Object Oriented Programming</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Basic Database Interview Questions</title>
+    <url>/2022/08/15/Basic%20Database%20Interview/</url>
+    <content><![CDATA[<p><strong>Explain Normalization</strong></p>
+<ul>
+<li>A database design technique to remove redundant data</li>
+</ul>
+<p><strong>How do we implement normalization</strong></p>
+<ul>
+<li>Normalizaiton is implemented by splitting tables in to two, one for reference data (master table) and the other for transaction data.</li>
+</ul>
+<p><strong>What is denormalization</strong></p>
+<ul>
+<li>A database design technique to improve search performance, we merge tables.</li>
+</ul>
+<p><strong>Explain OLTP vs OLAP</strong></p>
+<ul>
+<li>OLTP: Online Transaction Processing</li>
+<li>OLAP: Online Analytical Processing</li>
+<li>OLTP Normlization avoids redundancy and we follow normalization design</li>
+<li>OLAP Denormalization improve search performance and we follow denormalization design</li>
+<li>Two databases</li>
+</ul>
+<p><strong>Explain 1st,2nd,and 3rd normal form</strong></p>
+<ul>
+<li>1st normal form: A table when the columns have atomic values. It should not have repeating groups. (all column should only have atomic value)</li>
+<li>2nd normal form: 1st normal form should be satisfied. All non-key columns should be fully dependent on the primary key</li>
+<li>3rd normal form: All 1st and 2nd normal form should be satisfied. No transient depedency should be present. (cannot have non-key column depend on another non-key column)</li>
+</ul>
+<p><strong>Difference between primary key vs Unique key</strong>?</p>
+<ul>
+<li>Primary key can’t be null, unique can be null</li>
+<li>In table table, we can only have one primary key (single or combined) but multiple fields for unique key.</li>
+</ul>
+<p><strong>Differences between char vs varchar</strong></p>
+<ul>
+<li>char is fixed length</li>
+<li>varchar is variable length</li>
+</ul>
+<p><strong>Differentiate between Char vs Nchar</strong></p>
+<ul>
+<li>nchar = non english character, 1 character 2 bytes</li>
+<li>char, 1 character 1 bytes</li>
+</ul>
+<p><strong>What is the use of index</strong></p>
+<ul>
+<li>Increases search performance</li>
+</ul>
+<p><strong>What are the two types of indexes</strong>?</p>
+<ul>
+<li>Clustered vs Non-Clustered Index</li>
+</ul>
+<p><strong>Differences between clustered vs non-clustered index</strong></p>
+<ul>
+<li>Clustered index: leaf nodes point to actual data</li>
+<li>Non clustered index leaf node take help of clustered index to locate the actual data</li>
+<li>Only one clustered index in a table</li>
+<li>Many clustered index in a table</li>
+</ul>
+<p><strong>Function vs Stored Procedures</strong></p>
+<ul>
+<li>Function: Computation, only selects allowed.</li>
+<li>Stored procedures: mini batch program, can change the enviorment.</li>
+</ul>
+<p><strong>What are types of trigger</strong></p>
+<ul>
+<li>Ater trigger: execute after event happened</li>
+<li>Instead of trigger: to prevent some operations, instead of the event the logic is executed</li>
+</ul>
+<p><strong>What is transaction</strong></p>
+<ul>
+<li>helps to implement series of activity treat as one single unit.</li>
+</ul>
+<p><strong>What is inner joins</strong></p>
+<ul>
+<li>Inner join selects matching records from both tables</li>
+</ul>
+<p><strong>What is left join</strong></p>
+<ul>
+<li>All data from left table selected and only matching records from right table</li>
+</ul>
+<p><strong>What is full outer join</strong></p>
+<ul>
+<li>All matching and unmatching records from both left and right table are selected</li>
+</ul>
+<p><strong>What is cross join</strong></p>
+<ul>
+<li>Cross join is cartesian. Every record of one table is joined with other table records.</li>
+</ul>
+<p><strong>View</strong><br>
+Views can represent a subset of the data contained in a table</p>
+]]></content>
+      <categories>
+        <category>Database</category>
+      </categories>
+      <tags>
+        <tag>Database</tag>
       </tags>
   </entry>
 </search>
